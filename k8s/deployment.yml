@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-petclinic
+  namespace: petclinic
+spec:
+  selector:
+    matchLabels:
+      app: petclinic
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      containers:
+      - name: petclinic
+        image: 478208517748.dkr.ecr.us-east-2.amazonaws.com/k8s-static:number
+        ports:
+        - containerPort: 80
